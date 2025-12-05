@@ -686,9 +686,9 @@
       <div class="logo-container">
         <div class="logo-placeholder">
           <div style="font-size: 2rem; margin-bottom: 5px;">🎓</div>
-          <div style="font-size: 0.7rem;">logo.png</div>
+          <div style="font-size: 0.7rem;">Add Logo Here</div>
         </div>
-        <img src="logo.png" alt="University Logo">
+        <!-- Replace the placeholder with: <img src="logo.png" alt="University Logo"> -->
       </div>
 
       <div class="university">
@@ -862,3 +862,79 @@
         </div>
         <div class="icon-box">
           <span class="icon">💊</span>
+          <h3>Clinical Trials</h3>
+          <p>Medical applications moving toward human trials</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Slide 10: References -->
+    <section class="slide">
+      <h2>References</h2>
+      <ul style="margin-top: 30px; font-size: 0.95rem;">
+        <li style="margin-bottom: 20px;">[1] Fungi-mediated nanomaterials: Advances, synthesis. Science Direct, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
+        <li style="margin-bottom: 20px;">[2] The Biosynthesis of Nanoparticles by Fungi and the Role. BJAS, 2024. DOI: 10.37077/25200860.2024.541</li>
+        <li style="margin-bottom: 20px;">[3] Nanoparticles Biosynthesized by Fungi and Yeast. NCBI/PMC, 2015. DOI: 10.3390/ijms16010884</li>
+        <li style="margin-bottom: 20px;">[4] Myconanoparticles: synthesis and their role in medicine. Nanoscale, 2015. DOI: 10.1039/c4nr06693b</li>
+        <li>[5] Fungal-mediated synthesis of silver nanoparticles. Frontiers in Nanotechnology, 2024. DOI: 10.3389/fnano.2024.1291847</li>
+      </ul>
+    </section>
+
+    <!-- Slide 11: Thank You -->
+    <section class="slide thank-you-slide">
+      <h1>Thank You</h1>
+      <p style="margin-top: 30px;">for your attention</p>
+      <p style="margin-top: 50px; font-size: 1.2rem;">Questions?</p>
+    </section>
+
+  </div>
+
+  <script>
+    // Smooth scroll reveal on page load
+    window.addEventListener('load', () => {
+      const slides = document.querySelectorAll('.slide');
+      
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0) scale(1)';
+          }
+        });
+      }, observerOptions);
+
+      slides.forEach(slide => {
+        observer.observe(slide);
+      });
+    });
+
+    // Logo upload functionality
+    const logoContainer = document.querySelector('.logo-container');
+    const logoPlaceholder = document.querySelector('.logo-placeholder');
+    
+    logoContainer.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      
+      input.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            logoPlaceholder.innerHTML = `<img src="${event.target.result}" alt="University Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      
+      input.click();
+    });
+  </script>
+</body>
+</html>
