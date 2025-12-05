@@ -42,17 +42,84 @@
       font-size: var(--font-size-content);
       line-height: var(--line-height-content);
       overflow-x: hidden;
+      padding: 10px;
     }
 
     /* Slide Container */
     .slide {
-      width: 960px;
-      height: 540px;
+      width: 100%;
+      max-width: 960px;
+      min-height: 540px;
+      height: auto;
       margin: 0 auto 20px;
       display: flex;
       flex-shrink: 0;
       position: relative;
       overflow: hidden;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .slide {
+        min-height: auto;
+        padding: 2rem !important;
+      }
+      
+      .p-16 { padding: 2rem !important; }
+      .p-8 { padding: 1rem !important; }
+      
+      h1 { font-size: 2rem !important; }
+      h2 { font-size: 1.75rem !important; }
+      h3 { font-size: 1.25rem !important; }
+      
+      .text-6xl { font-size: 2.5rem !important; }
+      .text-5xl { font-size: 2rem !important; }
+      .text-4xl { font-size: 1.75rem !important; }
+      .text-2xl { font-size: 1.25rem !important; }
+      .text-xl { font-size: 1.1rem !important; }
+      .text-lg { font-size: 1rem !important; }
+      
+      .row {
+        flex-direction: column !important;
+      }
+      
+      .gap-6 { gap: 1rem !important; }
+      
+      ul, ol {
+        margin-left: 1.5rem;
+      }
+      
+      svg {
+        max-width: 150px !important;
+        max-height: 150px !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      body {
+        padding: 5px;
+      }
+      
+      .slide {
+        padding: 1.5rem !important;
+        margin-bottom: 10px;
+      }
+      
+      .text-6xl { font-size: 2rem !important; }
+      .text-5xl { font-size: 1.75rem !important; }
+      .text-2xl { font-size: 1.1rem !important; }
+      .text-lg { font-size: 0.95rem !important; }
+      .text-sm { font-size: 0.8rem !important; }
+      
+      ul, ol {
+        margin-left: 1rem;
+      }
+      
+      li {
+        margin-bottom: 0.5rem;
+      }
     }
 
     /* Layout Utilities */
