@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fungal Nanotechnology: Synthesis and Applications</title>
+  <title>Fungal Nanotechnology: Synthesis and Applications / نانۆتەکنەلۆژیای کەڕوو</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
     
@@ -24,6 +24,40 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
+    }
+
+    /* Language Toggle Button */
+    .language-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+
+    .lang-btn {
+      background: white;
+      border: 3px solid #667eea;
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #667eea;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .lang-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #764ba2;
     }
 
     /* Logo Container */
@@ -47,18 +81,51 @@
       transform: scale(1.05);
     }
 
-    .logo-container img {
-      max-width: 80%;
-      max-height: 80%;
-      object-fit: contain;
-    }
-
     .logo-placeholder {
       text-align: center;
       color: #667eea;
       font-size: 0.8rem;
       font-weight: 600;
       padding: 10px;
+    }
+
+    /* Language Content */
+    .lang-content {
+      display: none;
+    }
+
+    .lang-content.active {
+      display: block;
+    }
+
+    /* Kurdish text styling */
+    .lang-content[data-lang="ku"] {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .lang-content[data-lang="ku"] h1,
+    .lang-content[data-lang="ku"] h2,
+    .lang-content[data-lang="ku"] h3 {
+      text-align: right;
+    }
+
+    .lang-content[data-lang="ku"] ul {
+      padding-right: 0;
+    }
+
+    .lang-content[data-lang="ku"] ul li {
+      padding: 15px 40px 15px 0;
+    }
+
+    .lang-content[data-lang="ku"] ul li::before {
+      left: auto;
+      right: 10px;
+    }
+
+    .lang-content[data-lang="ku"] .grid-2,
+    .lang-content[data-lang="ku"] .process-flow {
+      direction: rtl;
     }
 
     /* Slide Container */
@@ -583,6 +650,16 @@
         padding: 10px;
       }
 
+      .language-toggle {
+        top: 10px;
+        right: 10px;
+      }
+
+      .lang-btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+
       .logo-container {
         width: 70px;
         height: 70px;
@@ -678,218 +755,450 @@
   </style>
 </head>
 <body>
+  <!-- Language Toggle Buttons -->
+  <div class="language-toggle">
+    <button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">English</button>
+    <button class="lang-btn" onclick="switchLanguage('ku')" data-lang="ku">کوردی</button>
+  </div>
+
   <div class="container">
-
-    <!-- Slide 1: Title Slide -->
-    <section class="slide title-slide">
-      <!-- Logo Container -->
-      <div class="logo-container">
-        <div class="logo-placeholder">
-          <div style="font-size: 2rem; margin-bottom: 5px;">🎓</div>
-          <div style="font-size: 0.7rem;"><img src="logo.png" alt="University Logo"></div>
+    <!-- English Content -->
+    <div class="lang-content active" data-lang="en">
+      <!-- Slide 1: Title Slide -->
+      <section class="slide title-slide">
+        <div class="logo-container">
+          <div class="logo-placeholder">
+            <div style="font-size: 2rem; margin-bottom: 5px;">🎓</div>
+            <div style="font-size: 0.7rem;">University</div>
+          </div>
         </div>
-        <img src="logo.png" alt="University Logo">
-      </div>
 
-      <div class="university">
-        <p>University of Raparin</p>
-        <p>College of Science - Biology Department</p>
-      </div>
-      <div>
-        <h1>Fungal Nanotechnology</h1>
-        <p class="subtitle">Synthesis and Applications</p>
-      </div>
-      <div class="meta">
-        <p><strong>Prepared by:</strong> Mahmood Khdir Faqe Rasul</p>
-        <p style="margin-top: 10px;"><strong>Supervised by:</strong> Dr. Asmaa S. Ahmed</p>
-      </div>
-    </section>
-
-    <!-- Slide 2: Outline -->
-    <section class="slide">
-      <h2>Outline</h2>
-      <ul style="margin-top: 40px;">
-        <li>What is Fungal Nanotechnology?</li>
-        <li>Synthesis Process & Mechanisms</li>
-        <li>Applications in Medicine, Agriculture & Environment</li>
-        <li>Challenges & Future Prospects</li>
-      </ul>
-    </section>
-
-    <!-- Slide 3: What is Fungal Nanotechnology? -->
-    <section class="slide">
-      <h2>What is Fungal Nanotechnology?</h2>
-      <div class="grid-2">
+        <div class="university">
+          <p>University of Raparin</p>
+          <p>College of Science - Biology Department</p>
+        </div>
         <div>
-          <ul>
-            <li>Fungi act as biological factories to synthesize nanoparticles</li>
-            <li>Uses enzymes and metabolites to reduce metal ions</li>
-            <li>Produces silver, gold, platinum nanoparticles naturally</li>
-            <li>Green, eco-friendly alternative to chemical methods</li>
-          </ul>
+          <h1>Fungal Nanotechnology</h1>
+          <p class="subtitle">Synthesis and Applications</p>
         </div>
-        <div class="svg-container">
-          <svg width="300" height="300" viewBox="0 0 300 300">
-            <defs>
-              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-              </linearGradient>
-            </defs>
-            <circle cx="150" cy="150" r="100" fill="url(#grad1)" opacity="0.2"/>
-            <circle cx="150" cy="150" r="70" fill="url(#grad1)" opacity="0.4"/>
-            <circle cx="150" cy="150" r="40" fill="url(#grad1)" opacity="0.6"/>
-            <circle cx="150" cy="150" r="20" fill="url(#grad1)"/>
-            <circle cx="120" cy="100" r="10" fill="#fbbf24"/>
-            <circle cx="180" cy="100" r="10" fill="#fbbf24"/>
-            <circle cx="120" cy="150" r="10" fill="#fbbf24"/>
-            <circle cx="180" cy="150" r="10" fill="#fbbf24"/>
-            <circle cx="120" cy="200" r="10" fill="#fbbf24"/>
-            <circle cx="180" cy="200" r="10" fill="#fbbf24"/>
-          </svg>
+        <div class="meta">
+          <p><strong>Prepared by:</strong> Mahmood Khdir Faqe Rasul</p>
+          <p style="margin-top: 10px;"><strong>Supervised by:</strong> Dr. Asmaa S. Ahmed</p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Slide 4: Synthesis Process -->
-    <section class="slide">
-      <h2>How Synthesis Works</h2>
-      <ul style="margin-top: 30px;">
-        <li><strong>Intracellular:</strong> Metal reduction occurs inside fungal cells</li>
-        <li><strong>Extracellular:</strong> Using cell-free filtrates or biomass</li>
-        <li><strong>Control:</strong> Adjust temperature, pH, concentration for size tuning</li>
-        <li><strong>Common fungi:</strong> Aspergillus, Fusarium, Penicillium</li>
-      </ul>
-    </section>
+      <!-- Slide 2: Outline -->
+      <section class="slide">
+        <h2>Outline</h2>
+        <ul style="margin-top: 40px;">
+          <li>What is Fungal Nanotechnology?</li>
+          <li>Synthesis Process & Mechanisms</li>
+          <li>Applications in Medicine, Agriculture & Environment</li>
+          <li>Challenges & Future Prospects</li>
+        </ul>
+      </section>
 
-    <!-- Slide 5: Synthesis Visualization -->
-    <section class="slide">
-      <h2>Synthesis Process Visualization</h2>
-      <div class="process-flow">
-        <div class="process-step">
-          <div class="process-icon">🍄</div>
-          <h3>Fungal Cell</h3>
-          <p>Biological Factory</p>
+      <!-- Slide 3: What is Fungal Nanotechnology? -->
+      <section class="slide">
+        <h2>What is Fungal Nanotechnology?</h2>
+        <div class="grid-2">
+          <div>
+            <ul>
+              <li>Fungi act as biological factories to synthesize nanoparticles</li>
+              <li>Uses enzymes and metabolites to reduce metal ions</li>
+              <li>Produces silver, gold, platinum nanoparticles naturally</li>
+              <li>Green, eco-friendly alternative to chemical methods</li>
+            </ul>
+          </div>
+          <div class="svg-container">
+            <svg width="300" height="300" viewBox="0 0 300 300">
+              <defs>
+                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <circle cx="150" cy="150" r="100" fill="url(#grad1)" opacity="0.2"/>
+              <circle cx="150" cy="150" r="70" fill="url(#grad1)" opacity="0.4"/>
+              <circle cx="150" cy="150" r="40" fill="url(#grad1)" opacity="0.6"/>
+              <circle cx="150" cy="150" r="20" fill="url(#grad1)"/>
+              <circle cx="120" cy="100" r="10" fill="#fbbf24"/>
+              <circle cx="180" cy="100" r="10" fill="#fbbf24"/>
+              <circle cx="120" cy="150" r="10" fill="#fbbf24"/>
+              <circle cx="180" cy="150" r="10" fill="#fbbf24"/>
+              <circle cx="120" cy="200" r="10" fill="#fbbf24"/>
+              <circle cx="180" cy="200" r="10" fill="#fbbf24"/>
+            </svg>
+          </div>
         </div>
-        <div class="arrow">→</div>
-        <div class="process-step">
-          <div class="process-icon">⚗️</div>
-          <h3>Bio-reduction</h3>
-          <p>Enzyme Action</p>
-        </div>
-        <div class="arrow">→</div>
-        <div class="process-step">
-          <div class="process-icon">✨</div>
-          <h3>Nanoparticles</h3>
-          <p>Final Product</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Slide 6: Medical Applications -->
-    <section class="slide">
-      <h2>Medical Applications</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>🦠 Antimicrobial</h3>
-          <p>Effective against bacteria, viruses, and fungi with powerful antimicrobial properties</p>
-        </div>
-        <div class="card">
-          <h3>💊 Anticancer</h3>
-          <p>Targeted drug delivery and tumor inhibition for cancer treatment</p>
-        </div>
-        <div class="card">
-          <h3>🩹 Wound Healing</h3>
-          <p>Accelerates tissue regeneration and speeds up healing process</p>
-        </div>
-        <div class="card">
-          <h3>🔬 Biosensors</h3>
-          <p>Disease detection and advanced diagnostic applications</p>
-        </div>
-      </div>
-    </section>
+      <!-- Slide 4: Synthesis Process -->
+      <section class="slide">
+        <h2>How Synthesis Works</h2>
+        <ul style="margin-top: 30px;">
+          <li><strong>Intracellular:</strong> Metal reduction occurs inside fungal cells</li>
+          <li><strong>Extracellular:</strong> Using cell-free filtrates or biomass</li>
+          <li><strong>Control:</strong> Adjust temperature, pH, concentration for size tuning</li>
+          <li><strong>Common fungi:</strong> Aspergillus, Fusarium, Penicillium</li>
+        </ul>
+      </section>
 
-    <!-- Slide 7: Agriculture & Environment -->
-    <section class="slide">
-      <h2>Agricultural & Environmental Applications</h2>
-      <div class="grid-2">
-        <div class="card">
-          <h3>🌾 Agriculture</h3>
-          <ul style="margin-top: 20px;">
-            <li>Nano-fungicides for crop protection</li>
-            <li>Plant growth enhancement</li>
-            <li>Nutrient delivery systems</li>
-            <li>Seed germination improvement</li>
-          </ul>
+      <!-- Slide 5: Synthesis Visualization -->
+      <section class="slide">
+        <h2>Synthesis Process Visualization</h2>
+        <div class="process-flow">
+          <div class="process-step">
+            <div class="process-icon">🍄</div>
+            <h3>Fungal Cell</h3>
+            <p>Biological Factory</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="process-step">
+            <div class="process-icon">⚗️</div>
+            <h3>Bio-reduction</h3>
+            <p>Enzyme Action</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="process-step">
+            <div class="process-icon">✨</div>
+            <h3>Nanoparticles</h3>
+            <p>Final Product</p>
+          </div>
         </div>
-        <div class="card">
-          <h3>🌍 Environment</h3>
-          <ul style="margin-top: 20px;">
-            <li>Heavy metal removal from water</li>
-            <li>Dye degradation in wastewater</li>
-            <li>Catalytic pollutant breakdown</li>
-            <li>Environmental bioremediation</li>
-          </ul>
+      </section>
+
+      <!-- Slide 6: Medical Applications -->
+      <section class="slide">
+        <h2>Medical Applications</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>🦠 Antimicrobial</h3>
+            <p>Effective against bacteria, viruses, and fungi with powerful antimicrobial properties</p>
+          </div>
+          <div class="card">
+            <h3>💊 Anticancer</h3>
+            <p>Targeted drug delivery and tumor inhibition for cancer treatment</p>
+          </div>
+          <div class="card">
+            <h3>🩹 Wound Healing</h3>
+            <p>Accelerates tissue regeneration and speeds up healing process</p>
+          </div>
+          <div class="card">
+            <h3>🔬 Biosensors</h3>
+            <p>Disease detection and advanced diagnostic applications</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Slide 8: Challenges -->
-    <section class="slide">
-      <h2>Challenges & Limitations</h2>
-      <ul style="margin-top: 30px;">
-        <li><strong>Scalability:</strong> Large-scale production remains challenging</li>
-        <li><strong>Standardization:</strong> Difficulty in controlling particle size and shape consistency</li>
-        <li><strong>Toxicity Concerns:</strong> Long-term effects need more research</li>
-        <li><strong>Cost:</strong> Purification and characterization can be expensive</li>
-        <li><strong>Time:</strong> Biological synthesis is slower than chemical methods</li>
-      </ul>
-    </section>
-
-    <!-- Slide 9: Future Prospects -->
-    <section class="slide">
-      <h2>Future Prospects</h2>
-      <div class="grid-3">
-        <div class="icon-box">
-          <span class="icon">🔬</span>
-          <h3>Advanced Research</h3>
-          <p>Genetic engineering of fungi for optimized production</p>
+      <!-- Slide 7: Agriculture & Environment -->
+      <section class="slide">
+        <h2>Agricultural & Environmental Applications</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🌾 Agriculture</h3>
+            <ul style="margin-top: 20px;">
+              <li>Nano-fungicides for crop protection</li>
+              <li>Plant growth enhancement</li>
+              <li>Nutrient delivery systems</li>
+              <li>Seed germination improvement</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🌍 Environment</h3>
+            <ul style="margin-top: 20px;">
+              <li>Heavy metal removal from water</li>
+              <li>Dye degradation in wastewater</li>
+              <li>Catalytic pollutant breakdown</li>
+              <li>Environmental bioremediation</li>
+            </ul>
+          </div>
         </div>
-        <div class="icon-box">
-          <span class="icon">🏭</span>
-          <h3>Industrial Scale</h3>
-          <p>Development of bioreactors for commercial use</p>
+      </section>
+
+      <!-- Slide 8: Challenges -->
+      <section class="slide">
+        <h2>Challenges & Limitations</h2>
+        <ul style="margin-top: 30px;">
+          <li><strong>Scalability:</strong> Large-scale production remains challenging</li>
+          <li><strong>Standardization:</strong> Difficulty in controlling particle size and shape consistency</li>
+          <li><strong>Toxicity Concerns:</strong> Long-term effects need more research</li>
+          <li><strong>Cost:</strong> Purification and characterization can be expensive</li>
+          <li><strong>Time:</strong> Biological synthesis is slower than chemical methods</li>
+        </ul>
+      </section>
+
+      <!-- Slide 9: Future Prospects -->
+      <section class="slide">
+        <h2>Future Prospects</h2>
+        <div class="grid-3">
+          <div class="icon-box">
+            <span class="icon">🔬</span>
+            <h3>Advanced Research</h3>
+            <p>Genetic engineering of fungi for optimized production</p>
+          </div>
+          <div class="icon-box">
+            <span class="icon">🏭</span>
+            <h3>Industrial Scale</h3>
+            <p>Development of bioreactors for commercial use</p>
+          </div>
+          <div class="icon-box">
+            <span class="icon">💊</span>
+            <h3>Clinical Trials</h3>
+            <p>Medical applications moving toward human trials</p>
+          </div>
         </div>
-        <div class="icon-box">
-          <span class="icon">💊</span>
-          <h3>Clinical Trials</h3>
-          <p>Medical applications moving toward human trials</p>
+      </section>
+
+      <!-- Slide 10: References -->
+      <section class="slide">
+        <h2>References</h2>
+        <ul style="margin-top: 30px; font-size: 0.95rem;">
+          <li style="margin-bottom: 20px;">[1] Fungi-mediated nanomaterials: Advances, synthesis. Science Direct, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
+          <li style="margin-bottom: 20px;">[2] The Biosynthesis of Nanoparticles by Fungi and the Role. BJAS, 2024. DOI: 10.37077/25200860.2024.541</li>
+          <li style="margin-bottom: 20px;">[3] Nanoparticles Biosynthesized by Fungi and Yeast. NCBI/PMC, 2015. DOI: 10.3390/ijms16010884</li>
+          <li style="margin-bottom: 20px;">[4] Myconanoparticles: synthesis and their role in medicine. Nanoscale, 2015. DOI: 10.1039/c4nr06693b</li>
+          <li>[5] Fungal-mediated synthesis of silver nanoparticles. Frontiers in Nanotechnology, 2024. DOI: 10.3389/fnano.2024.1291847</li>
+        </ul>
+      </section>
+
+      <!-- Slide 11: Thank You -->
+      <section class="slide thank-you-slide">
+        <h1>Thank You</h1>
+        <p style="margin-top: 30px;">for your attention</p>
+        <p style="margin-top: 50px; font-size: 1.2rem;">Questions?</p>
+      </section>
+    </div>
+
+    <!-- Kurdish Content -->
+    <div class="lang-content" data-lang="ku">
+      <!-- لایەی ١: لایەی سەرەکی -->
+      <section class="slide title-slide">
+        <div class="logo-container">
+          <div class="logo-placeholder">
+            <div style="font-size: 2rem; margin-bottom: 5px;">🎓</div>
+            <div style="font-size: 0.7rem;">زانکۆ</div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Slide 10: References -->
-    <section class="slide">
-      <h2>References</h2>
-      <ul style="margin-top: 30px; font-size: 0.95rem;">
-        <li style="margin-bottom: 20px;">[1] Fungi-mediated nanomaterials: Advances, synthesis. Science Direct, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
-        <li style="margin-bottom: 20px;">[2] The Biosynthesis of Nanoparticles by Fungi and the Role. BJAS, 2024. DOI: 10.37077/25200860.2024.541</li>
-        <li style="margin-bottom: 20px;">[3] Nanoparticles Biosynthesized by Fungi and Yeast. NCBI/PMC, 2015. DOI: 10.3390/ijms16010884</li>
-        <li style="margin-bottom: 20px;">[4] Myconanoparticles: synthesis and their role in medicine. Nanoscale, 2015. DOI: 10.1039/c4nr06693b</li>
-        <li>[5] Fungal-mediated synthesis of silver nanoparticles. Frontiers in Nanotechnology, 2024. DOI: 10.3389/fnano.2024.1291847</li>
-      </ul>
-    </section>
+        <div class="university">
+          <p>زانکۆی ڕاپەڕین</p>
+          <p>کۆلێژی زانست - بەشی بایۆلۆژی</p>
+        </div>
+        <div>
+          <h1>نانۆتەکنەلۆژیای کەڕوو</h1>
+          <p class="subtitle">دروستکردن و بەکارهێنان</p>
+        </div>
+        <div class="meta">
+          <p><strong>ئامادەکراوی:</strong> مەحموود خدر فەقێ ڕەسوڵ</p>
+          <p style="margin-top: 10px;"><strong>سەرپەرشتی:</strong> د. ئەسماء س. ئەحمەد</p>
+        </div>
+      </section>
 
-    <!-- Slide 11: Thank You -->
-    <section class="slide thank-you-slide">
-      <h1>Thank You</h1>
-      <p style="margin-top: 30px;">for your attention</p>
-      <p style="margin-top: 50px; font-size: 1.2rem;">Questions?</p>
-    </section>
+      <!-- لایەی ٢: پوختە -->
+      <section class="slide">
+        <h2>پوختەی سیمینار</h2>
+        <ul style="margin-top: 40px;">
+          <li>نانۆتەکنەلۆژیای کەڕوو چییە؟</li>
+          <li>پرۆسەی دروستکردن و میکانیزمەکانی</li>
+          <li>بەکارهێنان لە پزیشکی، کشتوکاڵ و ژینگە</li>
+          <li>کێشەکان و چاوەڕوانیەکانی داهاتوو</li>
+        </ul>
+      </section>
 
+      <!-- لایەی ٣: نانۆتەکنەلۆژیای کەڕوو چییە؟ -->
+      <section class="slide">
+        <h2>نانۆتەکنەلۆژیای کەڕوو چییە؟</h2>
+        <div class="grid-2">
+          <div>
+            <ul>
+              <li>کەڕوو وەک کارگەی بایۆلۆژی بۆ دروستکردنی نانۆتەنۆلکەکان</li>
+              <li>بەکارهێنانی ئەنزیم و مەتابۆلیتەکان بۆ کەمکردنەوەی ئایۆنی کانزا</li>
+              <li>بەرهەمهێنانی نانۆتەنۆلکەی زیو، زێڕ، پلاتین بە شێوەیەکی سروشتی</li>
+              <li>جێگرەوەیەکی سەوز و دۆستی ژینگە بۆ ڕێگەکانی کیمیایی</li>
+            </ul>
+          </div>
+          <div class="svg-container">
+            <svg width="300" height="300" viewBox="0 0 300 300">
+              <defs>
+                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                </linearGradient>
+              </defs>
+              <circle cx="150" cy="150" r="100" fill="url(#grad2)" opacity="0.2"/>
+              <circle cx="150" cy="150" r="70" fill="url(#grad2)" opacity="0.4"/>
+              <circle cx="150" cy="150" r="40" fill="url(#grad2)" opacity="0.6"/>
+              <circle cx="150" cy="150" r="20" fill="url(#grad2)"/>
+              <circle cx="120" cy="100" r="10" fill="#fbbf24"/>
+              <circle cx="180" cy="100" r="10" fill="#fbbf24"/>
+              <circle cx="120" cy="150" r="10" fill="#fbbf24"/>
+              <circle cx="180" cy="150" r="10" fill="#fbbf24"/>
+              <circle cx="120" cy="200" r="10" fill="#fbbf24"/>
+              <circle cx="180" cy="200" r="10" fill="#fbbf24"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- لایەی ٤: پرۆسەی دروستکردن -->
+      <section class="slide">
+        <h2>چۆنیەتی کارکردنی دروستکردن</h2>
+        <ul style="margin-top: 30px;">
+          <li><strong>ناوخشتەیی:</strong> کەمکردنەوەی کانزا لەناو خانەکانی کەڕوودا ڕوودەدات</li>
+          <li><strong>دەرەکی:</strong> بەکارهێنانی فلترەی بێ خانە یان بایۆماس</li>
+          <li><strong>کۆنترۆڵ:</strong> ڕێکخستنی پلەی گەرمی، pH، چڕی بۆ تایبەتمەندی قەبارە</li>
+          <li><strong>کەڕووی باو:</strong> ئاسپێرگیلۆس، فیوزاریۆم، پێنیسیلیۆم</li>
+        </ul>
+      </section>
+
+      <!-- لایەی ٥: وێنەکردنی پرۆسەی دروستکردن -->
+      <section class="slide">
+        <h2>وێنەکردنی پرۆسەی دروستکردن</h2>
+        <div class="process-flow">
+          <div class="process-step">
+            <div class="process-icon">🍄</div>
+            <h3>خانەی کەڕوو</h3>
+            <p>کارگەی بایۆلۆژی</p>
+          </div>
+          <div class="arrow">←</div>
+          <div class="process-step">
+            <div class="process-icon">⚗️</div>
+            <h3>کەمکردنەوەی بایۆلۆژی</h3>
+            <p>کارکردنی ئەنزیم</p>
+          </div>
+          <div class="arrow">←</div>
+          <div class="process-step">
+            <div class="process-icon">✨</div>
+            <h3>نانۆتەنۆلکە</h3>
+            <p>بەرهەمی کۆتایی</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- لایەی ٦: بەکارهێنانی پزیشکی -->
+      <section class="slide">
+        <h2>بەکارهێنانی پزیشکی</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>🦠 دژە میکرۆبی</h3>
+            <p>کاریگەر دژ بە بەکتریا، ڤایرۆس و کەڕوو لەگەڵ تایبەتمەندی دژە میکرۆبیی بەهێز</p>
+          </div>
+          <div class="card">
+            <h3>💊 دژە شێرپەنجە</h3>
+            <p>گەیاندنی دەرمان بە ئامانج و ڕێگریکردن لە توومۆر بۆ چارەسەری شێرپەنجە</p>
+          </div>
+          <div class="card">
+            <h3>🩹 چاککردنەوەی برین</h3>
+            <p>خێراکردنی نوێبوونەوەی شانە و خێراکردنی پرۆسەی چاکبوونەوە</p>
+          </div>
+          <div class="card">
+            <h3>🔬 بایۆسێنسەر</h3>
+            <p>دۆزینەوەی نەخۆشی و بەکارهێنانی تایبەتی</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- لایەی ٧: کشتوکاڵ و ژینگە -->
+      <section class="slide">
+        <h2>بەکارهێنانی کشتوکاڵی و ژینگەیی</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>🌾 کشتوکاڵ</h3>
+            <ul style="margin-top: 20px;">
+              <li>نانۆ-کەڕووکوژ بۆ پاراستنی بەروبووم</li>
+              <li>باشترکردنی گەشەی ڕووەک</li>
+              <li>سیستەمی گەیاندنی خۆراک</li>
+              <li>باشترکردنی ڕووانی تۆو</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>🌍 ژینگە</h3>
+            <ul style="margin-top: 20px;">
+              <li>لابردنی کانزا قورسەکان لە ئاو</li>
+              <li>تێکدانی بۆیاخ لە ئاوی پیس</li>
+              <li>تێکدانی پیسکەرەکان بە کاتالیست</li>
+              <li>چاککردنەوەی ژینگە بە بایۆلۆژی</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- لایەی ٨: کێشەکان -->
+      <section class="slide">
+        <h2>کێشەکان و سنوورداریەکان</h2>
+        <ul style="margin-top: 30px;">
+          <li><strong>گەورەکردن:</strong> بەرهەمهێنانی بە قەبارەی گەورە هێشتا کێشە درووستدەکات</li>
+          <li><strong>ستانداردکردن:</strong> سەختی کۆنترۆڵکردنی یەکگرتوویی قەبارە و شێواز</li>
+          <li><strong>نیگەرانی ژەهراوی:</strong> کاریگەرییەکانی درێژخایەن پێویستیان بە لێکۆڵینەوەی زیاتر هەیە</li>
+          <li><strong>تێچوون:</strong> پاککردنەوە و تایبەتمەندکردن دەکرێت گران بێت</li>
+          <li><strong>کات:</strong> دروستکردنی بایۆلۆژی خاوترە لە ڕێگەکانی کیمیایی</li>
+        </ul>
+      </section>
+
+      <!-- لایەی ٩: چاوەڕوانیەکانی داهاتوو -->
+      <section class="slide">
+        <h2>چاوەڕوانیەکانی داهاتوو</h2>
+        <div class="grid-3">
+          <div class="icon-box">
+            <span class="icon">🔬</span>
+            <h3>لێکۆڵینەوەی پێشکەوتوو</h3>
+            <p>ئەندازیاری جینی کەڕوو بۆ بەرهەمهێنانی باشکراو</p>
+          </div>
+          <div class="icon-box">
+            <span class="icon">🏭</span>
+            <h3>قەبارەی پیشەسازی</h3>
+            <p>گەشەپێدانی بایۆڕێئاکتەر بۆ بەکارهێنانی بازرگانی</p>
+          </div>
+          <div class="icon-box">
+            <span class="icon">💊</span>
+            <h3>تاقیکردنەوەی کلینیکی</h3>
+            <p>بەکارهێنانی پزیشکی بەرەو تاقیکردنەوە لەسەر مرۆڤ</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- لایەی ١٠: سەرچاوەکان -->
+      <section class="slide">
+        <h2>سەرچاوەکان</h2>
+        <ul style="margin-top: 30px; font-size: 0.95rem;">
+          <li style="margin-bottom: 20px;">[1] Fungi-mediated nanomaterials: Advances, synthesis. Science Direct, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
+          <li style="margin-bottom: 20px;">[2] The Biosynthesis of Nanoparticles by Fungi and the Role. BJAS, 2024. DOI: 10.37077/25200860.2024.541</li>
+          <li style="margin-bottom: 20px;">[3] Nanoparticles Biosynthesized by Fungi and Yeast. NCBI/PMC, 2015. DOI: 10.3390/ijms16010884</li>
+          <li style="margin-bottom: 20px;">[4] Myconanoparticles: synthesis and their role in medicine. Nanoscale, 2015. DOI: 10.1039/c4nr06693b</li>
+          <li>[5] Fungal-mediated synthesis of silver nanoparticles. Frontiers in Nanotechnology, 2024. DOI: 10.3389/fnano.2024.1291847</li>
+        </ul>
+      </section>
+
+      <!-- لایەی ١١: سوپاس -->
+      <section class="slide thank-you-slide">
+        <h1>سوپاس</h1>
+        <p style="margin-top: 30px;">بۆ سەرنجتان</p>
+        <p style="margin-top: 50px; font-size: 1.2rem;">پرسیار؟</p>
+      </section>
+    </div>
   </div>
 
   <script>
+    function switchLanguage(lang) {
+      // Hide all language contents
+      document.querySelectorAll('.lang-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Show selected language
+      document.querySelector(`.lang-content[data-lang="${lang}"]`).classList.add('active');
+      
+      // Update button states
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     // Smooth scroll reveal on page load
     window.addEventListener('load', () => {
       const slides = document.querySelectorAll('.slide');
@@ -914,26 +1223,30 @@
     });
 
     // Logo upload functionality
-    const logoContainer = document.querySelector('.logo-container');
-    const logoPlaceholder = document.querySelector('.logo-placeholder');
+    const logoContainers = document.querySelectorAll('.logo-container');
     
-    logoContainer.addEventListener('click', () => {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      
-      input.onchange = (e) => {
-        const file = e.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (event) => {
-            logoPlaceholder.innerHTML = `<img src="${event.target.result}" alt="University Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-      
-      input.click();
+    logoContainers.forEach(logoContainer => {
+      logoContainer.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        
+        input.onchange = (e) => {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+              logoContainers.forEach(container => {
+                const placeholder = container.querySelector('.logo-placeholder');
+                placeholder.innerHTML = `<img src="${event.target.result}" alt="University Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+              });
+            };
+            reader.readAsDataURL(file);
+          }
+        };
+        
+        input.click();
+      });
     });
   </script>
 </body>
