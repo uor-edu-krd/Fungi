@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fungal Nanotechnology: Synthesis and Applications / نانۆتەکنەلۆژیای کەڕوو</title>
+  <title>Fungal Nanotechnology - Complete Presentation</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;450;500;600;700;800;900&display=swap');
     
     * {
       margin: 0;
@@ -15,372 +15,241 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      overflow-x: hidden;
-      padding: 20px;
+      background: #1a1a2e;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-height: 100vh;
+      padding: 20px;
     }
 
-    .container {
+    .presentation-container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Language Toggle Button */
-    .language-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      display: flex;
-      gap: 10px;
-    }
-
-    .lang-btn {
+    .slide-wrapper {
       background: white;
-      border: 3px solid #667eea;
-      border-radius: 12px;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #667eea;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      position: relative;
     }
 
-    .lang-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-    }
-
-    .lang-btn.active {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border-color: #764ba2;
-    }
-
-    /* Logo Container */
-    .logo-container {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: 100px;
-      background: white;
-      border-radius: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      z-index: 10;
-      transition: transform 0.3s ease;
-    }
-
-    .logo-container:hover {
-      transform: scale(1.05);
-    }
-
-    .logo-placeholder {
-      text-align: center;
-      color: #667eea;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 10px;
-    }
-
-    /* Language Content */
-    .lang-content {
+    .slide {
       display: none;
+      width: 100%;
+      aspect-ratio: 16/9;
+      padding: 60px;
+      animation: slideIn 0.5s ease-out;
     }
 
-    .lang-content.active {
+    .slide.active {
       display: block;
     }
 
-    /* Kurdish text styling */
-    .lang-content[data-lang="ku"] {
-      direction: rtl;
-      text-align: right;
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
-    .lang-content[data-lang="ku"] h1,
-    .lang-content[data-lang="ku"] h2,
-    .lang-content[data-lang="ku"] h3 {
-      text-align: right;
+    /* Navigation */
+    .nav-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .lang-content[data-lang="ku"] ul {
-      padding-right: 0;
+    .nav-btn {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
     }
 
-    .lang-content[data-lang="ku"] ul li {
-      padding: 15px 40px 15px 0;
+    .nav-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
     }
 
-    .lang-content[data-lang="ku"] ul li::before {
-      left: auto;
-      right: 10px;
+    .nav-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
     }
 
-    .lang-content[data-lang="ku"] .grid-2,
-    .lang-content[data-lang="ku"] .process-flow {
-      direction: rtl;
+    .slide-counter {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e3a8a;
     }
 
-    /* Slide Container */
-    .slide {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      border-radius: 30px;
-      padding: 60px;
-      margin-bottom: 40px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(50px) scale(0.95);
-      animation: slideInView 0.8s ease-out forwards;
+    /* Slide Styles */
+    .slide-title {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 60px;
     }
 
-    .slide:nth-child(1) { animation-delay: 0s; }
-    .slide:nth-child(2) { animation-delay: 0.2s; }
-    .slide:nth-child(3) { animation-delay: 0.4s; }
-    .slide:nth-child(4) { animation-delay: 0.6s; }
-    .slide:nth-child(5) { animation-delay: 0.8s; }
-    .slide:nth-child(6) { animation-delay: 1s; }
-    .slide:nth-child(7) { animation-delay: 1.2s; }
-    .slide:nth-child(8) { animation-delay: 1.4s; }
-    .slide:nth-child(9) { animation-delay: 1.6s; }
-    .slide:nth-child(10) { animation-delay: 1.8s; }
-    .slide:nth-child(11) { animation-delay: 2s; }
-
-    .slide::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-      animation: slideBar 1s ease-out forwards;
-      animation-delay: 0.5s;
-    }
-
-    /* Typography with animations */
     h1 {
-      font-size: 4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 3.5rem;
+      font-weight: 800;
       margin-bottom: 20px;
-      line-height: 1.2;
-      opacity: 0;
-      transform: translateY(-30px);
-      animation: fadeInDown 0.8s ease-out forwards;
-      animation-delay: 0.3s;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     h2 {
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 700;
-      color: #2d3748;
+      color: #1e3a8a;
       margin-bottom: 30px;
-      position: relative;
+      border-bottom: 4px solid #3b82f6;
+      padding-bottom: 15px;
       display: inline-block;
-      opacity: 0;
-      transform: translateX(-50px);
-      animation: slideInRight 0.8s ease-out forwards;
-      animation-delay: 0.4s;
-    }
-
-    h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 0;
-      height: 4px;
-      background: linear-gradient(90deg, #667eea, #764ba2);
-      border-radius: 2px;
-      animation: expandWidth 0.8s ease-out forwards;
-      animation-delay: 1s;
     }
 
     h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #4a5568;
-      margin-bottom: 15px;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out forwards;
-      animation-delay: 0.5s;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 12px;
     }
 
     p {
       font-size: 1.1rem;
-      color: #4a5568;
+      color: #2d3748;
       line-height: 1.8;
-      opacity: 0;
-      animation: fadeInUp 0.6s ease-out forwards;
-      animation-delay: 0.6s;
+      margin-bottom: 15px;
     }
 
     .subtitle {
       font-size: 1.8rem;
-      color: #667eea;
-      font-weight: 400;
-      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
+      margin-bottom: 40px;
     }
 
-    /* Lists with staggered animations */
+    .meta {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 40px;
+    }
+
+    /* Grid Layouts */
+    .grid {
+      display: grid;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Cards */
+    .card {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 28px;
+      border-radius: 16px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(30, 58, 138, 0.4);
+    }
+
+    .card h3 {
+      color: white;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 1rem;
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* Info Boxes */
+    .info-box {
+      background: #eff6ff;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid #1e3a8a;
+      margin-bottom: 15px;
+    }
+
+    .info-box h3 {
+      color: #1e3a8a;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .info-box p {
+      color: #475569;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Lists */
     ul {
       list-style: none;
       padding: 0;
+      margin-top: 20px;
     }
 
     ul li {
-      padding: 15px 0 15px 40px;
-      font-size: 1.15rem;
-      color: #4a5568;
-      line-height: 1.8;
+      padding: 12px 0 12px 35px;
+      font-size: 1.05rem;
+      color: #2d3748;
+      line-height: 1.7;
       position: relative;
-      opacity: 0;
-      transform: translateX(-30px);
-      animation: slideInFade 0.6s ease-out forwards;
     }
 
     ul li::before {
       content: '●';
       position: absolute;
       left: 10px;
-      color: #667eea;
-      font-size: 1.5rem;
-      animation: pulse 1.5s ease-in-out infinite;
+      color: #3b82f6;
+      font-size: 1.3rem;
     }
-
-    ul li:nth-child(1) { animation-delay: 0.7s; }
-    ul li:nth-child(2) { animation-delay: 0.85s; }
-    ul li:nth-child(3) { animation-delay: 1s; }
-    ul li:nth-child(4) { animation-delay: 1.15s; }
-    ul li:nth-child(5) { animation-delay: 1.3s; }
 
     ul li strong {
-      color: #2d3748;
-      font-weight: 600;
-    }
-
-    /* Cards with hover and entrance animations */
-    .card {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 20px;
-      padding: 40px;
-      color: white;
-      height: 100%;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: scale(0.8) rotateY(10deg);
-      animation: cardEntrance 0.8s ease-out forwards;
-    }
-
-    .card:nth-child(1) { animation-delay: 0.8s; }
-    .card:nth-child(2) { animation-delay: 1s; }
-    .card:nth-child(3) { animation-delay: 1.2s; }
-    .card:nth-child(4) { animation-delay: 1.4s; }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-      transition: transform 0.6s ease;
-      opacity: 0;
-    }
-
-    .card:hover {
-      transform: translateY(-15px) scale(1.05);
-      box-shadow: 0 25px 50px rgba(102, 126, 234, 0.5);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-      transform: translate(25%, 25%) rotate(45deg);
-    }
-
-    .card h3 {
-      color: white;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-    }
-
-    .card p, .card li {
-      color: rgba(255, 255, 255, 0.95);
-    }
-
-    /* Grid Layout */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    /* Icon Box */
-    .icon-box {
-      background: white;
-      border-radius: 20px;
-      padding: 40px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: bounceIn 0.8s ease-out forwards;
-    }
-
-    .icon-box:nth-child(1) { animation-delay: 0.9s; }
-    .icon-box:nth-child(2) { animation-delay: 1.1s; }
-    .icon-box:nth-child(3) { animation-delay: 1.3s; }
-
-    .icon-box:hover {
-      transform: translateY(-15px) rotate(2deg);
-      box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
-    }
-
-    .icon-box .icon {
-      font-size: 4rem;
-      margin-bottom: 20px;
-      display: block;
-      animation: float 3s ease-in-out infinite;
-    }
-
-    .icon-box:nth-child(2) .icon {
-      animation-delay: 0.5s;
-    }
-
-    .icon-box:nth-child(3) .icon {
-      animation-delay: 1s;
+      color: #1e3a8a;
+      font-weight: 700;
     }
 
     /* Process Flow */
@@ -388,322 +257,108 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      margin-top: 50px;
-      flex-wrap: wrap;
-      gap: 20px;
+      margin-top: 40px;
+      gap: 15px;
     }
 
     .process-step {
       text-align: center;
       flex: 1;
-      min-width: 200px;
-      opacity: 0;
-      transform: scale(0.5);
-      animation: scaleIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     }
 
-    .process-step:nth-child(1) { animation-delay: 1s; }
-    .process-step:nth-child(2) { animation-delay: 1.3s; }
-    .process-step:nth-child(3) { animation-delay: 1.5s; }
-    .process-step:nth-child(5) { animation-delay: 1.8s; }
-
     .process-icon {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-      transition: all 0.4s ease;
-      animation: rotate360 3s linear infinite;
+      font-size: 2.5rem;
+      box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
     }
 
-    .process-step:hover .process-icon {
-      transform: scale(1.2) rotate(10deg);
-      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+    .process-step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .process-step p {
+      font-size: 0.9rem;
+      color: #475569;
     }
 
     .arrow {
       font-size: 2rem;
-      color: #667eea;
-      align-self: center;
-      opacity: 0;
-      animation: fadeIn 0.5s ease-out forwards;
+      color: #3b82f6;
+      font-weight: 800;
     }
 
-    .arrow:nth-of-type(2) { animation-delay: 1.2s; }
-    .arrow:nth-of-type(4) { animation-delay: 1.6s; }
-
-    /* Title Slide Specific */
-    .title-slide {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-align: center;
-      min-height: 600px;
+    /* Numbered Items */
+    .numbered-item {
+      background: #fff7ed;
+      padding: 18px;
+      border-radius: 12px;
+      border-left: 4px solid #ea580c;
+      margin-bottom: 15px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      position: relative;
+      align-items: flex-start;
+      gap: 12px;
     }
 
-    .title-slide::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
-    }
-
-    .title-slide h1 {
+    .number-badge {
+      background: #ea580c;
       color: white;
-      -webkit-text-fill-color: white;
-      font-size: 5rem;
-      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-      animation: titleGlow 2s ease-in-out infinite alternate;
-    }
-
-    .title-slide .subtitle {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 2rem;
-    }
-
-    .title-slide .meta {
-      margin-top: 50px;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.8);
+      flex-shrink: 0;
     }
 
-    .title-slide .university {
-      margin-bottom: 60px;
+    .numbered-item h3 {
       font-size: 1.1rem;
-      color: rgba(255, 255, 255, 0.9);
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-      animation-delay: 0.2s;
+      margin-bottom: 5px;
     }
 
-    /* Thank You Slide */
-    .thank-you-slide {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-align: center;
-      min-height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    .numbered-item p {
+      font-size: 0.95rem;
+      margin: 0;
     }
 
-    .thank-you-slide h1 {
-      color: white;
-      -webkit-text-fill-color: white;
-      font-size: 5rem;
-      animation: thankYouPulse 2s ease-in-out infinite;
+    /* Footer */
+    .slide-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 60px;
+      right: 60px;
+      font-size: 0.85rem;
+      color: #64748b;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 15px;
     }
 
-    .thank-you-slide p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 1.5rem;
-    }
-
-    /* SVG Styles with animations */
-    .svg-container {
-      text-align: center;
-      opacity: 0;
-      animation: fadeIn 1s ease-out forwards;
-      animation-delay: 1.2s;
-    }
-
-    svg {
-      max-width: 100%;
-      height: auto;
-    }
-
-    svg circle {
-      animation: svgPulse 2s ease-in-out infinite;
-    }
-
-    svg circle:nth-child(2) { animation-delay: 0.2s; }
-    svg circle:nth-child(3) { animation-delay: 0.4s; }
-    svg circle:nth-child(4) { animation-delay: 0.6s; }
-
-    /* Keyframe Animations */
-    @keyframes slideInView {
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes slideBar {
-      to {
-        left: 0;
-      }
-    }
-
-    @keyframes fadeInDown {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideInRight {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes expandWidth {
-      to {
-        width: 60px;
-      }
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes slideInFade {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.2); opacity: 0.7; }
-    }
-
-    @keyframes cardEntrance {
-      to {
-        opacity: 1;
-        transform: scale(1) rotateY(0);
-      }
-    }
-
-    @keyframes bounceIn {
-      0% {
-        opacity: 0;
-        transform: translateY(30px) scale(0.9);
-      }
-      60% {
-        opacity: 1;
-        transform: translateY(-10px) scale(1.05);
-      }
-      100% {
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes scaleIn {
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    @keyframes rotate360 {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    @keyframes titleGlow {
-      from { text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3); }
-      to { text-shadow: 0 5px 40px rgba(255, 255, 255, 0.3); }
-    }
-
-    @keyframes thankYouPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    @keyframes svgPulse {
-      0%, 100% { opacity: 0.8; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
-    }
-
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
-
-      .language-toggle {
-        top: 10px;
-        right: 10px;
-      }
-
-      .lang-btn {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-      }
-
-      .logo-container {
-        width: 70px;
-        height: 70px;
-        top: 10px;
-        left: 10px;
-      }
-
+    /* Responsive */
+    @media (max-width: 968px) {
       .slide {
-        padding: 30px;
-        border-radius: 20px;
-        margin-bottom: 20px;
+        padding: 40px;
       }
 
       h1 {
-        font-size: 2.5rem !important;
-      }
-
-      .title-slide h1 {
-        font-size: 3rem !important;
+        font-size: 2.5rem;
       }
 
       h2 {
-        font-size: 2rem !important;
+        font-size: 1.8rem;
       }
 
-      h3 {
-        font-size: 1.3rem !important;
-      }
-
-      p, ul li {
-        font-size: 1rem !important;
-      }
-
-      .subtitle {
-        font-size: 1.3rem !important;
-      }
-
-      .grid, .grid-2, .grid-3 {
-        grid-template-columns: 1fr !important;
-        gap: 20px;
-      }
-
-      .card {
-        padding: 30px;
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
       }
 
       .process-flow {
@@ -712,542 +367,419 @@
 
       .arrow {
         transform: rotate(90deg);
-        margin: 10px 0;
-      }
-
-      .icon-box {
-        padding: 30px;
-      }
-
-      .process-icon {
-        width: 100px;
-        height: 100px;
-        font-size: 2.5rem;
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 640px) {
+      body {
+        padding: 10px;
+      }
+
       .slide {
-        padding: 20px;
+        padding: 30px;
       }
 
       h1 {
-        font-size: 2rem !important;
-      }
-
-      .title-slide h1 {
-        font-size: 2.5rem !important;
+        font-size: 2rem;
       }
 
       h2 {
-        font-size: 1.5rem !important;
+        font-size: 1.5rem;
       }
 
-      ul li {
-        font-size: 0.95rem !important;
-        padding: 10px 0 10px 35px;
-      }
-
-      .card {
-        padding: 25px;
+      .nav-btn {
+        padding: 10px 20px;
+        font-size: 14px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Language Toggle Buttons -->
-  <div class="language-toggle">
-    <button class="lang-btn active" onclick="switchLanguage('en')" data-lang="en">English</button>
-    <button class="lang-btn" onclick="switchLanguage('ku')" data-lang="ku">کوردی</button>
-  </div>
-
-  <div class="container">
-    <!-- English Content -->
-    <div class="lang-content active" data-lang="en">
-      <!-- Slide 1: Title Slide -->
-      <section class="slide title-slide">
-        <div class="logo-container">
-          <div class="logo-placeholder">
-            <div style="font-size: 2rem; margin-bottom: 5px;">🎓</div>
-            <div style="font-size: 0.7rem;">University</div>
-          </div>
-        </div>
-
-        <div class="university">
-          <p>University of Raparin</p>
-          <p>College of Science - Biology Department</p>
-        </div>
-        <div>
-          <h1>Fungal Nanotechnology</h1>
-          <p class="subtitle">Synthesis and Applications</p>
-        </div>
+  <div class="presentation-container">
+    <div class="slide-wrapper">
+      <!-- Slide 1: Title -->
+      <div class="slide active slide-title">
+        <h1>Fungal Nanotechnology</h1>
+        <p class="subtitle">Synthesis and Applications in Modern Science</p>
         <div class="meta">
           <p><strong>Prepared by:</strong> Mahmood Khdir Faqe Rasul</p>
           <p style="margin-top: 10px;"><strong>Supervised by:</strong> Dr. Asmaa S. Ahmed</p>
+          <p style="margin-top: 30px; font-size: 1rem;">University of Raparin | College of Science | Biology Department</p>
         </div>
-      </section>
+      </div>
 
       <!-- Slide 2: Outline -->
-      <section class="slide">
-        <h2>Outline</h2>
-        <ul style="margin-top: 40px;">
-          <li>What is Fungal Nanotechnology?</li>
-          <li>Synthesis Process & Mechanisms</li>
-          <li>Applications in Medicine, Agriculture & Environment</li>
-          <li>Challenges & Future Prospects</li>
-        </ul>
-      </section>
-
-      <!-- Slide 3: What is Fungal Nanotechnology? -->
-      <section class="slide">
-        <h2>What is Fungal Nanotechnology?</h2>
-        <div class="grid-2">
-          <div>
-            <ul>
-              <li>Fungi act as biological factories to synthesize nanoparticles</li>
-              <li>Uses enzymes and metabolites to reduce metal ions</li>
-              <li>Produces silver, gold, platinum nanoparticles naturally</li>
-              <li>Green, eco-friendly alternative to chemical methods</li>
-            </ul>
+      <div class="slide">
+        <h2>Presentation Outline</h2>
+        <div class="grid grid-2" style="margin-top: 50px;">
+          <div class="card">
+            <span class="card-icon">1️⃣</span>
+            <h3>Introduction</h3>
+            <p>What is Fungal Nanotechnology?</p>
           </div>
-          <div class="svg-container">
-            <svg width="300" height="300" viewBox="0 0 300 300">
-              <defs>
-                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                </linearGradient>
-              </defs>
-              <circle cx="150" cy="150" r="100" fill="url(#grad1)" opacity="0.2"/>
-              <circle cx="150" cy="150" r="70" fill="url(#grad1)" opacity="0.4"/>
-              <circle cx="150" cy="150" r="40" fill="url(#grad1)" opacity="0.6"/>
-              <circle cx="150" cy="150" r="20" fill="url(#grad1)"/>
-              <circle cx="120" cy="100" r="10" fill="#fbbf24"/>
-              <circle cx="180" cy="100" r="10" fill="#fbbf24"/>
-              <circle cx="120" cy="150" r="10" fill="#fbbf24"/>
-              <circle cx="180" cy="150" r="10" fill="#fbbf24"/>
-              <circle cx="120" cy="200" r="10" fill="#fbbf24"/>
-              <circle cx="180" cy="200" r="10" fill="#fbbf24"/>
-            </svg>
+          <div class="card">
+            <span class="card-icon">2️⃣</span>
+            <h3>Synthesis</h3>
+            <p>Mechanisms & Methods</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">3️⃣</span>
+            <h3>Applications</h3>
+            <p>Medicine, Agriculture & Environment</p>
+          </div>
+          <div class="card">
+            <span class="card-icon">4️⃣</span>
+            <h3>Future</h3>
+            <p>Challenges & Prospects</p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Slide 4: Synthesis Process -->
-      <section class="slide">
-        <h2>How Synthesis Works</h2>
-        <ul style="margin-top: 30px;">
-          <li><strong>Intracellular:</strong> Metal reduction occurs inside fungal cells</li>
-          <li><strong>Extracellular:</strong> Using cell-free filtrates or biomass</li>
-          <li><strong>Control:</strong> Adjust temperature, pH, concentration for size tuning</li>
-          <li><strong>Common fungi:</strong> Aspergillus, Fusarium, Penicillium</li>
-        </ul>
-      </section>
+      <!-- Slide 3: What is Fungal Nanotechnology -->
+      <div class="slide">
+        <h2>What is Fungal Nanotechnology?</h2>
+        <div class="info-box">
+          <h3>🍄 Biological Factories</h3>
+          <p>Fungi act as natural synthesis systems for producing nanoparticles through their metabolic processes.</p>
+        </div>
+        <div class="info-box">
+          <h3>⚗️ Enzymatic Reduction</h3>
+          <p>Uses fungal enzymes and metabolites to reduce metal ions into metallic nanoparticles.</p>
+        </div>
+        <div class="info-box">
+          <h3>✨ Metal Nanoparticles</h3>
+          <p>Produces silver, gold, platinum, and other metal nanoparticles naturally and efficiently.</p>
+        </div>
+        <div class="info-box">
+          <h3>🌱 Green Technology</h3>
+          <p>Eco-friendly, sustainable alternative to chemical synthesis methods with reduced environmental impact.</p>
+        </div>
+      </div>
 
-      <!-- Slide 5: Synthesis Visualization -->
-      <section class="slide">
-        <h2>Synthesis Process Visualization</h2>
+      <!-- Slide 4: Common Fungi -->
+      <div class="slide">
+        <h2>Common Fungi in Nanotechnology</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="card-icon">🍄</span>
+            <h3>Aspergillus</h3>
+            <p style="margin-bottom: 10px;">Most widely studied genus for nanoparticle synthesis</p>
+            <p style="font-size: 0.9rem;"><strong>Species:</strong> A. niger, A. fumigatus, A. flavus</p>
+            <p style="font-size: 0.9rem;"><strong>Produces:</strong> Ag, Au, ZnO nanoparticles</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);">
+            <span class="card-icon">🍄</span>
+            <h3>Fusarium</h3>
+            <p style="margin-bottom: 10px;">Excellent for extracellular synthesis of metal nanoparticles</p>
+            <p style="font-size: 0.9rem;"><strong>Species:</strong> F. oxysporum, F. solani</p>
+            <p style="font-size: 0.9rem;"><strong>Produces:</strong> Ag, Au, CdS nanoparticles</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);">
+            <span class="card-icon">🍄</span>
+            <h3>Penicillium</h3>
+            <p style="margin-bottom: 10px;">Known for producing stable and uniform nanoparticles</p>
+            <p style="font-size: 0.9rem;"><strong>Species:</strong> P. chrysogenum, P. digitatum</p>
+            <p style="font-size: 0.9rem;"><strong>Produces:</strong> Ag, Au, Pt nanoparticles</p>
+          </div>
+        </div>
+        <div style="margin-top: 25px; background: #eff6ff; padding: 18px; border-radius: 12px; text-align: center;">
+          <p style="color: #1e3a8a; font-weight: 600;">✓ Fast growth rate • High metal tolerance • Efficient reduction capabilities</p>
+        </div>
+      </div>
+
+      <!-- Slide 5: Synthesis Mechanisms -->
+      <div class="slide">
+        <h2>Synthesis Mechanisms</h2>
+        <div class="grid grid-2">
+          <div class="card">
+            <span class="card-icon">🔬</span>
+            <h3>Intracellular Synthesis</h3>
+            <p style="margin-bottom: 15px;">Metal ions are transported into fungal cells and reduced by intracellular enzymes.</p>
+            <p style="font-size: 0.9rem; opacity: 0.9;">1. Metal ion uptake by cells<br>2. Intracellular enzyme reduction<br>3. Nanoparticle accumulation</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);">
+            <span class="card-icon">⚗️</span>
+            <h3>Extracellular Synthesis</h3>
+            <p style="margin-bottom: 15px;">Metal ions are reduced by secreted enzymes in the culture medium.</p>
+            <p style="font-size: 0.9rem; opacity: 0.9;">1. Enzyme secretion to medium<br>2. Metal ion reduction outside cells<br>3. Easy harvesting from filtrate</p>
+          </div>
+        </div>
+        <div style="margin-top: 25px; background: #eff6ff; padding: 20px; border-radius: 12px;">
+          <h3 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 15px;">Key Factors Controlling Synthesis</h3>
+          <p style="font-size: 0.95rem;">🌡️ Temperature: 25-30°C • ⚖️ pH Level: 5-7 • ⏱️ Time: 24-72 hours • 🧪 Concentration: 1-5 mM</p>
+        </div>
+      </div>
+
+      <!-- Slide 6: Process Flow -->
+      <div class="slide">
+        <h2>Synthesis Process Flow</h2>
         <div class="process-flow">
           <div class="process-step">
             <div class="process-icon">🍄</div>
-            <h3>Fungal Cell</h3>
+            <h3>Fungal Culture</h3>
             <p>Biological Factory</p>
+          </div>
+          <div class="arrow">→</div>
+          <div class="process-step">
+            <div class="process-icon">🧪</div>
+            <h3>Metal Addition</h3>
+            <p>Add metal salts</p>
           </div>
           <div class="arrow">→</div>
           <div class="process-step">
             <div class="process-icon">⚗️</div>
             <h3>Bio-reduction</h3>
-            <p>Enzyme Action</p>
+            <p>Enzyme action</p>
           </div>
           <div class="arrow">→</div>
           <div class="process-step">
             <div class="process-icon">✨</div>
             <h3>Nanoparticles</h3>
-            <p>Final Product</p>
+            <p>Final product</p>
           </div>
         </div>
-      </section>
+        <div style="margin-top: 40px; background: #eff6ff; padding: 20px; border-radius: 12px;">
+          <h3 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 15px;">Characterization Methods</h3>
+          <p style="font-size: 0.95rem; color: #475569;">UV-Vis Spectroscopy • TEM/SEM • XRD • FTIR</p>
+        </div>
+      </div>
 
-      <!-- Slide 6: Medical Applications -->
-      <section class="slide">
+      <!-- Slide 7: Medical Applications -->
+      <div class="slide">
         <h2>Medical Applications</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>🦠 Antimicrobial</h3>
-            <p>Effective against bacteria, viruses, and fungi with powerful antimicrobial properties</p>
+        <div class="grid grid-4">
+          <div class="card" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
+            <span class="card-icon">🦠</span>
+            <h3>Antimicrobial Activity</h3>
+            <p>Effective against drug-resistant bacteria and fungi</p>
           </div>
-          <div class="card">
-            <h3>💊 Anticancer</h3>
-            <p>Targeted drug delivery and tumor inhibition for cancer treatment</p>
+          <div class="card" style="background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);">
+            <span class="card-icon">💊</span>
+            <h3>Anticancer Potential</h3>
+            <p>Targeted therapy for various cancer types</p>
           </div>
-          <div class="card">
-            <h3>🩹 Wound Healing</h3>
-            <p>Accelerates tissue regeneration and speeds up healing process</p>
+          <div class="card" style="background: linear-gradient(135deg, #059669 0%, #10b981 100%);">
+            <span class="card-icon">🩹</span>
+            <h3>Wound Healing</h3>
+            <p>Accelerates tissue regeneration</p>
           </div>
-          <div class="card">
-            <h3>🔬 Biosensors</h3>
-            <p>Disease detection and advanced diagnostic applications</p>
+          <div class="card" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+            <span class="card-icon">🔬</span>
+            <h3>Diagnostic Biosensors</h3>
+            <p>Early disease detection systems</p>
           </div>
         </div>
-      </section>
+        <div style="margin-top: 25px; background: #eff6ff; padding: 18px; border-radius: 12px; text-align: center;">
+          <p style="color: #1e3a8a; font-weight: 600;">Biocompatibility • Lower toxicity • Enhanced therapeutic effects</p>
+        </div>
+      </div>
 
-      <!-- Slide 7: Agriculture & Environment -->
-      <section class="slide">
+      <!-- Slide 8: Agriculture & Environment -->
+      <div class="slide">
         <h2>Agricultural & Environmental Applications</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>🌾 Agriculture</h3>
-            <ul style="margin-top: 20px;">
-              <li>Nano-fungicides for crop protection</li>
-              <li>Plant growth enhancement</li>
-              <li>Nutrient delivery systems</li>
-              <li>Seed germination improvement</li>
+        <div class="grid grid-2">
+          <div class="card" style="background: linear-gradient(135deg, #65a30d 0%, #84cc16 100%);">
+            <span class="card-icon">🌾</span>
+            <h3>Agriculture</h3>
+            <ul style="margin-top: 15px;">
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Nano-fungicides for crop protection</li>
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Plant growth enhancement</li>
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Nutrient delivery systems</li>
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Improved seed germination</li>
             </ul>
           </div>
-          <div class="card">
-            <h3>🌍 Environment</h3>
-            <ul style="margin-top: 20px;">
-              <li>Heavy metal removal from water</li>
-              <li>Dye degradation in wastewater</li>
-              <li>Catalytic pollutant breakdown</li>
-              <li>Environmental bioremediation</li>
+          <div class="card" style="background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);">
+            <span class="card-icon">🌍</span>
+            <h3>Environment</h3>
+            <ul style="margin-top: 15px;">
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Heavy metal removal from water</li>
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Dye degradation in wastewater</li>
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Catalytic pollutant breakdown</li>
+              <li style="color: white; padding: 8px 0 8px 25px; font-size: 0.95rem;">Environmental bioremediation</li>
             </ul>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Slide 8: Challenges -->
-      <section class="slide">
+      <!-- Slide 9: Advantages -->
+      <div class="slide">
+        <h2>Advantages of Fungal Synthesis</h2>
+        <div class="grid grid-3">
+          <div class="card" style="background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);">
+            <span class="card-icon">🌱</span>
+            <h3>Eco-Friendly</h3>
+            <p>No toxic chemicals required</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 100%);">
+            <span class="card-icon">💰</span>
+            <h3>Cost-Effective</h3>
+            <p>Inexpensive culture media</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);">
+            <span class="card-icon">🔬</span>
+            <h3>Scalable</h3>
+            <p>Easy industrial production</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);">
+            <span class="card-icon">✨</span>
+            <h3>Stable Products</h3>
+            <p>Natural protein capping</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);">
+            <span class="card-icon">🎯</span>
+            <h3>Controllable</h3>
+            <p>Size and shape control</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #ca8a04 0%, #eab308 100%);">
+            <span class="card-icon">🛡️</span>
+            <h3>Biocompatible</h3>
+            <p>Suited for biological use</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 10: Challenges -->
+      <div class="slide">
         <h2>Challenges & Limitations</h2>
-        <ul style="margin-top: 30px;">
-          <li><strong>Scalability:</strong> Large-scale production remains challenging</li>
-          <li><strong>Standardization:</strong> Difficulty in controlling particle size and shape consistency</li>
-          <li><strong>Toxicity Concerns:</strong> Long-term effects need more research</li>
-          <li><strong>Cost:</strong> Purification and characterization can be expensive</li>
-          <li><strong>Time:</strong> Biological synthesis is slower than chemical methods</li>
-        </ul>
-      </section>
-
-      <!-- Slide 9: Future Prospects -->
-      <section class="slide">
-        <h2>Future Prospects</h2>
-        <div class="grid-3">
-          <div class="icon-box">
-            <span class="icon">🔬</span>
-            <h3>Advanced Research</h3>
-            <p>Genetic engineering of fungi for optimized production</p>
-          </div>
-          <div class="icon-box">
-            <span class="icon">🏭</span>
-            <h3>Industrial Scale</h3>
-            <p>Development of bioreactors for commercial use</p>
-          </div>
-          <div class="icon-box">
-            <span class="icon">💊</span>
-            <h3>Clinical Trials</h3>
-            <p>Medical applications moving toward human trials</p>
+        <div class="numbered-item">
+          <div class="number-badge">1</div>
+          <div>
+            <h3>Scalability Issues</h3>
+            <p>Difficulty in large-scale production and maintaining consistency in industrial settings.</p>
           </div>
         </div>
-      </section>
+        <div class="numbered-item" style="background: #fef2f2; border-left-color: #dc2626;">
+          <div class="number-badge" style="background: #dc2626;">2</div>
+          <div>
+            <h3>Standardization</h3>
+            <p>Controlling particle size, shape, and uniformity across different batches remains challenging.</p>
+          </div>
+        </div>
+        <div class="numbered-item" style="background: #fef3f2; border-left-color: #ef4444;">
+          <div class="number-badge" style="background: #ef4444;">3</div>
+          <div>
+            <h3>Time-Consuming Process</h3>
+            <p>Biological synthesis takes 24-72 hours, slower than chemical methods (minutes to hours).</p>
+          </div>
+        </div>
+        <div class="numbered-item" style="background: #fef9ed; border-left-color: #f59e0b;">
+          <div class="number-badge" style="background: #f59e0b;">4</div>
+          <div>
+            <h3>Purification Costs</h3>
+            <p>Separation of nanoparticles from fungal biomass and proteins can be expensive.</p>
+          </div>
+        </div>
+        <div class="numbered-item" style="background: #fef2f3; border-left-color: #f43f5e;">
+          <div class="number-badge" style="background: #f43f5e;">5</div>
+          <div>
+            <h3>Toxicity Concerns</h3>
+            <p>Long-term toxicity effects and environmental impact need comprehensive research.</p>
+          </div>
+        </div>
+      </div>
 
-      <!-- Slide 10: References -->
-      <section class="slide">
+      <!-- Slide 11: Future Prospects -->
+      <div class="slide">
+        <h2>Future Prospects & Research Directions</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <span class="card-icon">🧬</span>
+            <h3>Genetic Engineering</h3>
+            <p>Modify fungal strains to enhance nanoparticle production efficiency</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);">
+            <span class="card-icon">🏭</span>
+            <h3>Industrial Scale-Up</h3>
+            <p>Develop bioreactors for commercial manufacturing</p>
+          </div>
+          <div class="card" style="background: linear-gradient(135deg, #60a5fa 0%, #93c5fd 100%);">
+            <span class="card-icon">🔬</span>
+            <h3>Novel Applications</h3>
+            <p>Explore uses in electronics and energy storage</p>
+          </div>
+        </div>
+        <div style="margin-top: 30px; background: #eff6ff; padding: 22px; border-radius: 12px;">
+          <h3 style="color: #1e3a8a; font-size: 1.2rem; margin-bottom: 15px;">Key Research Priorities</h3>
+          <p style="font-size: 0.95rem; color: #475569;">⚡ Process Optimization • 🎯 Targeted Synthesis • 🧪 Clinical Trials • 💡 AI Integration</p>
+        </div>
+      </div>
+
+      <!-- Slide 12: References -->
+      <div class="slide">
         <h2>References</h2>
-        <ul style="margin-top: 30px; font-size: 0.95rem;">
-          <li style="margin-bottom: 20px;">[1] Fungi-mediated nanomaterials: Advances, synthesis. Science Direct, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
-          <li style="margin-bottom: 20px;">[2] The Biosynthesis of Nanoparticles by Fungi and the Role. BJAS, 2024. DOI: 10.37077/25200860.2024.541</li>
-          <li style="margin-bottom: 20px;">[3] Nanoparticles Biosynthesized by Fungi and Yeast. NCBI/PMC, 2015. DOI: 10.3390/ijms16010884</li>
-          <li style="margin-bottom: 20px;">[4] Myconanoparticles: synthesis and their role in medicine. Nanoscale, 2015. DOI: 10.1039/c4nr06693b</li>
-          <li>[5] Fungal-mediated synthesis of silver nanoparticles. Frontiers in Nanotechnology, 2024. DOI: 10.3389/fnano.2024.1291847</li>
+        <ul style="margin-top: 30px;">
+          <li><strong>[1]</strong> Fungi-mediated nanomaterials: Advances, synthesis. <em>Science Direct</em>, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
+          <li><strong>[2]</strong> The Biosynthesis of Nanoparticles by Fungi and the Role. <em>BJAS</em>, 2024. DOI: 10.37077/25200860.2024.541</li>
+          <li><strong>[3]</strong> Nanoparticles Biosynthesized by Fungi and Yeast. <em>NCBI/PMC</em>, 2015. DOI: 10.3390/ijms16010884</li>
+          <li><strong>[4]</strong> Myconanoparticles: synthesis and their role in medicine. <em>Nanoscale</em>, 2015. DOI: 10.1039/c4nr06693b</li>
+          <li><strong>[5]</strong> Fungal-mediated synthesis of silver nanoparticles. <em>Frontiers in Nanotechnology</em>, 2024. DOI: 10.3389/fnano.2024.1291847</li>
+          <li><strong>[6]</strong> Green synthesis of nanoparticles using fungi. <em>Materials Today</em>, 2023. Various research articles</li>
+          <li><strong>[7]</strong> Applications of fungal nanoparticles in biomedicine. <em>Journal of Nanobiotechnology</em>, 2024. Multiple studies</li>
         </ul>
-      </section>
+      </div>
 
-      <!-- Slide 11: Thank You -->
-      <section class="slide thank-you-slide">
-        <h1>Thank You</h1>
-        <p style="margin-top: 30px;">for your attention</p>
-        <p style="margin-top: 50px; font-size: 1.2rem;">Questions?</p>
-      </section>
+      <!-- Slide 13: Thank You -->
+      <div class="slide slide-title">
+        <div style="text-align: center;">
+          <div style="font-size: 4rem; margin-bottom: 30px;">🙏</div>
+          <h1>Thank You</h1>
+          <p class="subtitle">for your attention</p>
+          <div style="background: rgba(255, 255, 255, 0.15); padding: 35px; border-radius: 20px; margin-top: 40px; backdrop-filter: blur(10px);">
+            <p style="font-size: 1.5rem; margin-bottom: 15px; font-weight: 600;">Questions & Discussion</p>
+            <p style="font-size: 1.1rem; opacity: 0.9;">Feel free to ask any questions about fungal nanotechnology</p>
+          </div>
+          <div style="margin-top: 40px;">
+            <p style="font-size: 1.1rem;">Mahmood Khdir Faqe Rasul</p>
+            <p style="font-size: 0.95rem; margin-top: 8px; opacity: 0.85;">University of Raparin | Biology Department | 2024</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Kurdish Content -->
-    <div class="lang-content" data-lang="ku">
-      <!-- لایەی ١: لایەی سەرەکی -->
-      <section class="slide title-slide">
-        <div class="logo-container">
-          <div class="logo-placeholder">
-            <div style="font-size: 2rem; margin-bottom: 5px;">🎓</div>
-            <div style="font-size: 0.7rem;">زانکۆ</div>
-          </div>
-        </div>
-
-        <div class="university">
-          <p>زانکۆی ڕاپەڕین</p>
-          <p>کۆلێژی زانست - بەشی بایۆلۆژی</p>
-        </div>
-        <div>
-          <h1>نانۆتەکنەلۆژیای کەڕوو</h1>
-          <p class="subtitle">دروستکردن و بەکارهێنان</p>
-        </div>
-        <div class="meta">
-          <p><strong>ئامادەکراوی:</strong> مەحموود خدر فەقێ ڕەسوڵ</p>
-          <p style="margin-top: 10px;"><strong>سەرپەرشتی:</strong> د. ئەسماء س. ئەحمەد</p>
-        </div>
-      </section>
-
-      <!-- لایەی ٢: پوختە -->
-      <section class="slide">
-        <h2>پوختەی سیمینار</h2>
-        <ul style="margin-top: 40px;">
-          <li>نانۆتەکنەلۆژیای کەڕوو چییە؟</li>
-          <li>پرۆسەی دروستکردن و میکانیزمەکانی</li>
-          <li>بەکارهێنان لە پزیشکی، کشتوکاڵ و ژینگە</li>
-          <li>کێشەکان و چاوەڕوانیەکانی داهاتوو</li>
-        </ul>
-      </section>
-
-      <!-- لایەی ٣: نانۆتەکنەلۆژیای کەڕوو چییە؟ -->
-      <section class="slide">
-        <h2>نانۆتەکنەلۆژیای کەڕوو چییە؟</h2>
-        <div class="grid-2">
-          <div>
-            <ul>
-              <li>کەڕوو وەک کارگەی بایۆلۆژی بۆ دروستکردنی نانۆتەنۆلکەکان</li>
-              <li>بەکارهێنانی ئەنزیم و مەتابۆلیتەکان بۆ کەمکردنەوەی ئایۆنی کانزا</li>
-              <li>بەرهەمهێنانی نانۆتەنۆلکەی زیو، زێڕ، پلاتین بە شێوەیەکی سروشتی</li>
-              <li>جێگرەوەیەکی سەوز و دۆستی ژینگە بۆ ڕێگەکانی کیمیایی</li>
-            </ul>
-          </div>
-          <div class="svg-container">
-            <svg width="300" height="300" viewBox="0 0 300 300">
-              <defs>
-                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-                </linearGradient>
-              </defs>
-              <circle cx="150" cy="150" r="100" fill="url(#grad2)" opacity="0.2"/>
-              <circle cx="150" cy="150" r="70" fill="url(#grad2)" opacity="0.4"/>
-              <circle cx="150" cy="150" r="40" fill="url(#grad2)" opacity="0.6"/>
-              <circle cx="150" cy="150" r="20" fill="url(#grad2)"/>
-              <circle cx="120" cy="100" r="10" fill="#fbbf24"/>
-              <circle cx="180" cy="100" r="10" fill="#fbbf24"/>
-              <circle cx="120" cy="150" r="10" fill="#fbbf24"/>
-              <circle cx="180" cy="150" r="10" fill="#fbbf24"/>
-              <circle cx="120" cy="200" r="10" fill="#fbbf24"/>
-              <circle cx="180" cy="200" r="10" fill="#fbbf24"/>
-            </svg>
-          </div>
-        </div>
-      </section>
-
-      <!-- لایەی ٤: پرۆسەی دروستکردن -->
-      <section class="slide">
-        <h2>چۆنیەتی کارکردنی دروستکردن</h2>
-        <ul style="margin-top: 30px;">
-          <li><strong>ناوخشتەیی:</strong> کەمکردنەوەی کانزا لەناو خانەکانی کەڕوودا ڕوودەدات</li>
-          <li><strong>دەرەکی:</strong> بەکارهێنانی فلترەی بێ خانە یان بایۆماس</li>
-          <li><strong>کۆنترۆڵ:</strong> ڕێکخستنی پلەی گەرمی، pH، چڕی بۆ تایبەتمەندی قەبارە</li>
-          <li><strong>کەڕووی باو:</strong> ئاسپێرگیلۆس، فیوزاریۆم، پێنیسیلیۆم</li>
-        </ul>
-      </section>
-
-      <!-- لایەی ٥: وێنەکردنی پرۆسەی دروستکردن -->
-      <section class="slide">
-        <h2>وێنەکردنی پرۆسەی دروستکردن</h2>
-        <div class="process-flow">
-          <div class="process-step">
-            <div class="process-icon">🍄</div>
-            <h3>خانەی کەڕوو</h3>
-            <p>کارگەی بایۆلۆژی</p>
-          </div>
-          <div class="arrow">←</div>
-          <div class="process-step">
-            <div class="process-icon">⚗️</div>
-            <h3>کەمکردنەوەی بایۆلۆژی</h3>
-            <p>کارکردنی ئەنزیم</p>
-          </div>
-          <div class="arrow">←</div>
-          <div class="process-step">
-            <div class="process-icon">✨</div>
-            <h3>نانۆتەنۆلکە</h3>
-            <p>بەرهەمی کۆتایی</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- لایەی ٦: بەکارهێنانی پزیشکی -->
-      <section class="slide">
-        <h2>بەکارهێنانی پزیشکی</h2>
-        <div class="grid">
-          <div class="card">
-            <h3>🦠 دژە میکرۆبی</h3>
-            <p>کاریگەر دژ بە بەکتریا، ڤایرۆس و کەڕوو لەگەڵ تایبەتمەندی دژە میکرۆبیی بەهێز</p>
-          </div>
-          <div class="card">
-            <h3>💊 دژە شێرپەنجە</h3>
-            <p>گەیاندنی دەرمان بە ئامانج و ڕێگریکردن لە توومۆر بۆ چارەسەری شێرپەنجە</p>
-          </div>
-          <div class="card">
-            <h3>🩹 چاککردنەوەی برین</h3>
-            <p>خێراکردنی نوێبوونەوەی شانە و خێراکردنی پرۆسەی چاکبوونەوە</p>
-          </div>
-          <div class="card">
-            <h3>🔬 بایۆسێنسەر</h3>
-            <p>دۆزینەوەی نەخۆشی و بەکارهێنانی تایبەتی</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- لایەی ٧: کشتوکاڵ و ژینگە -->
-      <section class="slide">
-        <h2>بەکارهێنانی کشتوکاڵی و ژینگەیی</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>🌾 کشتوکاڵ</h3>
-            <ul style="margin-top: 20px;">
-              <li>نانۆ-کەڕووکوژ بۆ پاراستنی بەروبووم</li>
-              <li>باشترکردنی گەشەی ڕووەک</li>
-              <li>سیستەمی گەیاندنی خۆراک</li>
-              <li>باشترکردنی ڕووانی تۆو</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>🌍 ژینگە</h3>
-            <ul style="margin-top: 20px;">
-              <li>لابردنی کانزا قورسەکان لە ئاو</li>
-              <li>تێکدانی بۆیاخ لە ئاوی پیس</li>
-              <li>تێکدانی پیسکەرەکان بە کاتالیست</li>
-              <li>چاککردنەوەی ژینگە بە بایۆلۆژی</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- لایەی ٨: کێشەکان -->
-      <section class="slide">
-        <h2>کێشەکان و سنوورداریەکان</h2>
-        <ul style="margin-top: 30px;">
-          <li><strong>گەورەکردن:</strong> بەرهەمهێنانی بە قەبارەی گەورە هێشتا کێشە درووستدەکات</li>
-          <li><strong>ستانداردکردن:</strong> سەختی کۆنترۆڵکردنی یەکگرتوویی قەبارە و شێواز</li>
-          <li><strong>نیگەرانی ژەهراوی:</strong> کاریگەرییەکانی درێژخایەن پێویستیان بە لێکۆڵینەوەی زیاتر هەیە</li>
-          <li><strong>تێچوون:</strong> پاککردنەوە و تایبەتمەندکردن دەکرێت گران بێت</li>
-          <li><strong>کات:</strong> دروستکردنی بایۆلۆژی خاوترە لە ڕێگەکانی کیمیایی</li>
-        </ul>
-      </section>
-
-      <!-- لایەی ٩: چاوەڕوانیەکانی داهاتوو -->
-      <section class="slide">
-        <h2>چاوەڕوانیەکانی داهاتوو</h2>
-        <div class="grid-3">
-          <div class="icon-box">
-            <span class="icon">🔬</span>
-            <h3>لێکۆڵینەوەی پێشکەوتوو</h3>
-            <p>ئەندازیاری جینی کەڕوو بۆ بەرهەمهێنانی باشکراو</p>
-          </div>
-          <div class="icon-box">
-            <span class="icon">🏭</span>
-            <h3>قەبارەی پیشەسازی</h3>
-            <p>گەشەپێدانی بایۆڕێئاکتەر بۆ بەکارهێنانی بازرگانی</p>
-          </div>
-          <div class="icon-box">
-            <span class="icon">💊</span>
-            <h3>تاقیکردنەوەی کلینیکی</h3>
-            <p>بەکارهێنانی پزیشکی بەرەو تاقیکردنەوە لەسەر مرۆڤ</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- لایەی ١٠: سەرچاوەکان -->
-      <section class="slide">
-        <h2>سەرچاوەکان</h2>
-        <ul style="margin-top: 30px; font-size: 0.95rem;">
-          <li style="margin-bottom: 20px;">[1] Fungi-mediated nanomaterials: Advances, synthesis. Science Direct, 2025. DOI: 10.1016/j.nantod.2025.102351</li>
-          <li style="margin-bottom: 20px;">[2] The Biosynthesis of Nanoparticles by Fungi and the Role. BJAS, 2024. DOI: 10.37077/25200860.2024.541</li>
-          <li style="margin-bottom: 20px;">[3] Nanoparticles Biosynthesized by Fungi and Yeast. NCBI/PMC, 2015. DOI: 10.3390/ijms16010884</li>
-          <li style="margin-bottom: 20px;">[4] Myconanoparticles: synthesis and their role in medicine. Nanoscale, 2015. DOI: 10.1039/c4nr06693b</li>
-          <li>[5] Fungal-mediated synthesis of silver nanoparticles. Frontiers in Nanotechnology, 2024. DOI: 10.3389/fnano.2024.1291847</li>
-        </ul>
-      </section>
-
-      <!-- لایەی ١١: سوپاس -->
-      <section class="slide thank-you-slide">
-        <h1>سوپاس</h1>
-        <p style="margin-top: 30px;">بۆ سەرنجتان</p>
-        <p style="margin-top: 50px; font-size: 1.2rem;">پرسیار؟</p>
-      </section>
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+      <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Previous</button>
+      <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">13</span>
+      </div>
+      <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
     </div>
   </div>
 
   <script>
-    function switchLanguage(lang) {
-      // Hide all language contents
-      document.querySelectorAll('.lang-content').forEach(content => {
-        content.classList.remove('active');
-      });
+    let currentSlide = 1;
+    const totalSlides = 13;
+
+    function showSlide(n) {
+      const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
       
-      // Show selected language
-      document.querySelector(`.lang-content[data-lang="${lang}"]`).classList.add('active');
+      if (n > totalSlides) currentSlide = totalSlides;
+      if (n < 1) currentSlide = 1;
       
-      // Update button states
-      document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[currentSlide - 1].classList.add('active');
       
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.getElementById('currentSlide').textContent = currentSlide;
+      
+      prevBtn.disabled = currentSlide === 1;
+      nextBtn.disabled = currentSlide === totalSlides;
     }
 
-    // Smooth scroll reveal on page load
-    window.addEventListener('load', () => {
-      const slides = document.querySelectorAll('.slide');
-      
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
+    function changeSlide(n) {
+      currentSlide += n;
+      showSlide(currentSlide);
+    }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0) scale(1)';
-          }
-        });
-      }, observerOptions);
-
-      slides.forEach(slide => {
-        observer.observe(slide);
-      });
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
     });
 
-    // Logo upload functionality
-    const logoContainers = document.querySelectorAll('.logo-container');
-    
-    logoContainers.forEach(logoContainer => {
-      logoContainer.addEventListener('click', () => {
-        const input = document.createElement('input');
-        input.type = 'file';
-        input.accept = 'image/*';
-        
-        input.onchange = (e) => {
-          const file = e.target.files[0];
-          if (file) {
-            const reader = new FileReader();
-            reader.onload = (event) => {
-              logoContainers.forEach(container => {
-                const placeholder = container.querySelector('.logo-placeholder');
-                placeholder.innerHTML = `<img src="${event.target.result}" alt="University Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
-              });
-            };
-            reader.readAsDataURL(file);
-          }
-        };
-        
-        input.click();
-      });
-    });
+    // Initialize
+    showSlide(currentSlide);
   </script>
 </body>
 </html>
